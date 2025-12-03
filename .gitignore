@@ -1,0 +1,12 @@
+# Python / Venv
+__pycache__/
+*.py[cod]
+venv/
+.env
+
+# MkDocs Build Output
+site/
+
+# OS System Files
+.DS_Store
+Thumbs.db
