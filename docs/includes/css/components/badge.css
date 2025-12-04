@@ -1,0 +1,37 @@
+.db-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: var(--db-radius-sm);
+    font-size: 12px !important;
+    /* font-size: var(--db-text-xs); */
+    font-weight: 500;
+    border: 1px solid transparent;
+    /* 기본 보더 투명 */
+    white-space: nowrap;
+}
+
+/* Modifier: Outline (기존 태그 스타일) */
+.db-badge--outline {
+    background-color: transparent;
+    color: var(--db-muted-fg);
+    border-color: var(--db-border);
+}
+
+/* Modifier: Secondary (기존 파트/그룹 스타일) */
+.db-badge--secondary {
+    background-color: var(--db-secondary);
+    color: var(--db-secondary-fg);
+    border-color: var(--db-border);
+    border-radius: 9999px;
+    margin: 5px 0px;
+    /* Pill shape */
+}
+
+/* Modifier: Status (학습 상태용) */
+.db-badge--status {
+    padding: 1px 6px;
+    border-radius: 4px;
+    background-color: var(--db-muted);
+    color: var(--db-fg);
+}

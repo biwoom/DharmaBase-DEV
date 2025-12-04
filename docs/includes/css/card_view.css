@@ -1,0 +1,84 @@
+/* Layout: Kanban Board */
+.db-board {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    padding-bottom: 20px;
+    min-height: 600px;
+    align-items: flex-start;
+    font-family: var(--db-font-sans);
+}
+
+.db-column {
+    min-width: 320px;
+    max-width: 320px;
+    flex-shrink: 0;
+    background-color: var(--db-muted);
+    border-radius: var(--db-radius-lg);
+    border: 1px solid var(--db-border);
+    padding: 12px;
+}
+
+.db-column__header {
+    padding: 8px 4px 16px 4px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--db-fg);
+    display: flex;
+    justify-content: space-between;
+}
+
+.db-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Component: Kanban Card Item */
+.db-kanban-card {
+    background-color: var(--db-card);
+    border: 1px solid var(--db-border);
+    border-radius: var(--db-radius-md);
+    padding: 16px;
+    box-shadow: var(--db-shadow-sm);
+    text-decoration: none !important;
+    display: block;
+    color: var(--db-card-fg) !important;
+    transition: all 0.2s ease;
+}
+
+.db-kanban-card:hover {
+    box-shadow: var(--db-shadow-md);
+    border-color: var(--db-primary);
+    transform: translateY(-2px);
+}
+
+.db-kanban-card__title {
+    font-size: 17px !important;
+    /* 1.25rem (20px) - Zensical Standard */
+    font-weight: 600 !important;
+    margin: 8px 0 8px 0 !important;
+    line-height: 1.4 !important;
+    color: var(--db-fg);
+}
+
+.db-kanban-card__meta {
+    font-size: 15px;
+    /* 14px */
+    color: var(--db-muted-fg);
+    margin-bottom: 12px;
+}
+
+.db-kanban-card__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 8px;
+    font-size: var(--db-text-xs);
+}
+
+/* Controls Wrapper */
+.db-controls {
+    margin-bottom: 2rem;
+    padding: 0 4px;
+}

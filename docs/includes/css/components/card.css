@@ -1,0 +1,36 @@
+/* Card Component */
+.db-card {
+    max-width: 24rem;
+    /* max-w-sm */
+    background-color: var(--db-bg);
+    border: 1px solid var(--db-border);
+    /* border-neutral-200/60 approximation */
+    border-radius: var(--db-radius-lg);
+    box-shadow: var(--db-shadow-sm);
+    padding: 1.75rem;
+    /* p-7 */
+}
+
+.db-card__link {
+    display: block;
+    margin-bottom: 0.75rem;
+    /* mb-3 */
+    text-decoration: none;
+}
+
+.db-card__title {
+    font-size: 1.25rem;
+    /* text-xl */
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.025em;
+    color: var(--db-fg);
+    margin: 0;
+}
+
+.db-card__desc {
+    margin-bottom: 1rem;
+    color: var(--db-muted-fg);
+    font-size: 1rem;
+    line-height: 1.5;
+}

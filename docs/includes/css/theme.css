@@ -1,0 +1,57 @@
+:root {
+    /* Color Palette (Slate/Shadcn) */
+    --db-bg: #ffffff;
+    --db-fg: #0f172a;
+    --db-muted: #f1f5f9;
+    --db-muted-fg: #64748b;
+    --db-border: #e2e8f0;
+    --db-primary: #0f172a;
+    --db-primary-fg: #f8fafc;
+    --db-secondary: #f1f5f9;
+    --db-secondary-fg: #0f172a;
+
+    /* Card & Shadows */
+    --db-card: #ffffff;
+    --db-card-fg: #0f172a;
+    --db-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --db-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+    /* Radius & Spacing */
+    --db-radius-sm: 0.25rem;
+    --db-radius-md: 0.375rem;
+    --db-radius-lg: 0.5rem;
+
+    /* Typography */
+    --db-font-sans: ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+    /* Font Sizes (Scale based on Zensical/Material) */
+    --db-text-h1: 1.875em;
+    /* 30px */
+    --db-text-h2: 1.5em;
+    /* 24px */
+    --db-text-h3: 1.25em;
+    /* 20px */
+    --db-text-p: 1em;
+    /* 16px */
+
+    /* Utility Sizes */
+    --db-text-sm: 0.875em;
+    /* 14px */
+    --db-text-xs: 0.75em;
+    /* 12px */
+
+    /* Accents */
+    --db-accent: #f8fafc;
+}
+
+/* Global Utilities */
+.db-icon {
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.25rem;
+}
+
+.db-icon-xs {
+    width: 1rem;
+    height: 1rem;
+}

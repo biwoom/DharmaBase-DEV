@@ -48,8 +48,8 @@ Copyright &copy; 2025 biwoom
 # Read more: https://zensical.org/docs/setup/navigation/
 nav = [
   { "홈" = "index.md" },
-  { "Card View" = "card.md" },
-  { "List View" = "list.md" },
+  { "Card View" = "card_view.md" },
+  { "List View" = "list_view.md" },
   { "User" = "user.md" },
     { "Sutras" = [
         { "개요" = "sutras/index.md" },
@@ -57,7 +57,11 @@ nav = [
         { "2장: 출가" = ["sutras/02_renunciation/article2-1.md", "sutras/02_renunciation/article2-2.md"] },
         { "3장: 수행" = ["sutras/03_asceticism/article3-1.md", "sutras/03_asceticism/article3-2.md"] },
         { "4장: 성도" = ["sutras/04_enlightenment/article4-1.md", "sutras/04_enlightenment/article4-2.md"] },
-        { "5장: 전법" = ["sutras/05_turning_wheel/article5-1.md", "sutras/05_turning_wheel/article5-2.md"] }
+        { "5장: 전법" = [
+            "sutras/05_turning_wheel/article5-1.md",
+            "sutras/05_turning_wheel/article5-2.md",
+            { "12연기" = ["sutras/05_turning_wheel/12_dependent_origination/article5-3.md"] }
+        ] }
     ]}
 ]
 
@@ -79,7 +83,20 @@ nav = [
 #
 # Read more: https://zensical.org/docs/customization/#additional-css
 #
-extra_css = ["includes/card.css"]
+extra_css = [
+    "includes/css/theme.css",
+    "includes/css/components/badge.css",
+    "includes/css/components/button.css",
+    "includes/css/components/dropdown.css",
+    "includes/css/components/card.css",
+    "includes/css/components/table.css",
+    "includes/css/components/tab.css",
+    "includes/css/components/slideover.css",
+    "includes/css/components/select.css",
+    "includes/css/components/context-menu.css",
+    "includes/css/card_view.css",
+    "includes/css/list_view.css"
+]
 
 # With the `extra_javascript` option you can add your own JavaScript to your
 # project to customize the behavior according to your needs.
@@ -89,6 +106,7 @@ extra_css = ["includes/card.css"]
 # Read more: https://zensical.org/docs/customization/#additional-javascript
 extra_javascript = [
     "includes/card.js",
+    "includes/list.js",
     "https://unpkg.com/alpinejs@3.13.3/dist/cdn.min.js"
 ]
 

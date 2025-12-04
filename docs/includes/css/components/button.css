@@ -1,0 +1,50 @@
+.db-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--db-radius-md);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+}
+
+/* Modifier: Dashed (카드 추가 버튼용) */
+.db-btn--dashed {
+    background-color: transparent;
+    border: 1px dashed var(--db-border);
+    color: var(--db-muted-fg);
+}
+
+.db-btn--dashed:hover {
+    background-color: var(--db-bg);
+    color: var(--db-fg);
+    border-color: var(--db-primary);
+}
+
+/* Modifier: Full Width */
+.db-btn--full {
+    width: 100%;
+    padding: 0.6rem;
+}
+
+/* Modifier: Toggle (필터 버튼용) */
+.db-btn--toggle {
+    padding: 4px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--db-border);
+    background: var(--db-muted);
+    color: var(--db-fg);
+    font-size: 13px;
+}
+
+.db-btn--toggle:hover {
+    background: var(--db-border);
+}
+
+.db-btn--toggle.is-active {
+    background: #e0e0e0;
+    /* Active state */
+    font-weight: 600;
+}

@@ -8,7 +8,7 @@ volume: "4권"
 tags: ['깨달음', '붓다']
 keywords: ['샛별', '연기법']
 summary: "새벽 별을 보며 마침내 무상정등각을 이루다."
-learning_status: "완료"
+learning_status: "학습완료"
 ---
 
 # 새벽 별을 보며

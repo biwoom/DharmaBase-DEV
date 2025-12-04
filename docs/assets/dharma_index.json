@@ -1,28 +1,13 @@
 [
   {
-    "id": "/card/",
-    "title": "Card View",
+    "id": "/list_view/",
+    "title": "list_view",
     "metadata": {
-      "title": "Card View",
-      "doc_type": "system",
       "hide": [
         "navigation",
         "toc"
       ],
-      "chapter_order": 999,
-      "chapter": "Uncategorized"
-    }
-  },
-  {
-    "id": "/list/",
-    "title": "List View",
-    "metadata": {
-      "title": "List View",
       "doc_type": "system",
-      "hide": [
-        "navigation",
-        "toc"
-      ],
       "chapter_order": 999,
       "chapter": "Uncategorized"
     }
@@ -47,6 +32,20 @@
     "title": "User Dashboard",
     "metadata": {
       "title": "User Dashboard",
+      "doc_type": "system",
+      "hide": [
+        "navigation",
+        "toc"
+      ],
+      "chapter_order": 999,
+      "chapter": "Uncategorized"
+    }
+  },
+  {
+    "id": "/card_view/",
+    "title": "Card View",
+    "metadata": {
+      "title": "Card View",
       "doc_type": "system",
       "hide": [
         "navigation",
@@ -86,7 +85,7 @@
         "연기법"
       ],
       "summary": "새벽 별을 보며 마침내 무상정등각을 이루다.",
-      "learning_status": "완료",
+      "learning_status": "학습완료",
       "chapter_order": 4
     }
   },
@@ -109,7 +108,7 @@
         "파순"
       ],
       "summary": "깨달음을 방해하는 마왕의 온갖 유혹을 물리치다.",
-      "learning_status": "완료",
+      "learning_status": "학습완료",
       "chapter_order": 4
     }
   },
@@ -296,6 +295,29 @@
       "summary": "깨달음을 얻기 위해 극한의 고행을 감내하다.",
       "learning_status": "학습중",
       "chapter_order": 3
+    }
+  },
+  {
+    "id": "/sutras/05_turning_wheel/12_dependent_origination/article5-3/",
+    "title": "12연기",
+    "metadata": {
+      "title": "12연기",
+      "chapter": "전법",
+      "part": "라자가하",
+      "order": 1,
+      "division": "5품",
+      "volume": "5권",
+      "tags": [
+        "사성제",
+        "팔정도"
+      ],
+      "keywords": [
+        "녹야원",
+        "오비구"
+      ],
+      "summary": "이것이 있으므로 저것이 있다",
+      "learning_status": "학습중",
+      "chapter_order": 5
     }
   }
 ]

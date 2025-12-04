@@ -1,0 +1,130 @@
+.db-select {
+    position: relative;
+    width: 16rem;
+    /* w-64 */
+}
+
+.db-select__trigger {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 38px;
+    padding: 0.5rem 2.5rem 0.5rem 0.75rem;
+    text-align: left;
+    background-color: var(--db-bg);
+    border: 1px solid var(--db-border);
+    border-radius: var(--db-radius-md);
+    box-shadow: var(--db-shadow-sm);
+    font-size: 0.875rem;
+    /* text-sm */
+    cursor: default;
+    color: var(--db-fg);
+}
+
+.db-select__trigger:focus {
+    outline: none;
+}
+
+.db-select__trigger--active {
+    /* Focus Ring Logic handled via Alpine or CSS focus-visible */
+    border-color: var(--db-muted-fg);
+}
+
+.db-select__value {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.db-select__icon-wrapper {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    padding-right: 0.5rem;
+    pointer-events: none;
+}
+
+.db-select__icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--db-muted-fg);
+}
+
+/* Dropdown */
+.db-select__dropdown {
+    position: absolute;
+    width: 100%;
+    max-height: 14rem;
+    /* max-h-56 */
+    overflow-auto;
+    padding: 0.25rem 0;
+    margin-top: 0.25rem;
+    background-color: var(--db-bg);
+    border-radius: var(--db-radius-md);
+    box-shadow: var(--db-shadow-md);
+    font-size: 0.875rem;
+    list-style: none;
+    z-index: 50;
+    border: 1px solid var(--db-border);
+}
+
+.db-select__dropdown--top {
+    bottom: 0;
+    margin-bottom: 2.5rem;
+}
+
+.db-select__dropdown--bottom {
+    top: 0;
+    margin-top: 2.5rem;
+}
+
+/* Transitions */
+.db-select-enter-start {
+    opacity: 0;
+    transform: translateY(-0.25rem);
+}
+
+/* Items */
+.db-select__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0.5rem 0.5rem 0.5rem 2rem;
+    color: var(--db-fg);
+    cursor: default;
+    user-select: none;
+}
+
+.db-select__item[data-disabled="true"] {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.db-select__item--active {
+    background-color: var(--db-muted);
+    /* neutral-100 */
+}
+
+.db-select__check-icon {
+    position: absolute;
+    left: 0;
+    margin-left: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    color: var(--db-muted-fg);
+}
+
+.db-select__item-text {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 500;
+}

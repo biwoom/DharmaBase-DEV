@@ -9,21 +9,27 @@ hide:
 <div x-data="dharmaCard" class="card-container">
 
     <div class="db-controls">
-        <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
-            <input 
-                type="text" 
-                x-model="search" 
-                placeholder="검색어 입력 (제목, 내용, 태그)..."
-                style="flex-grow: 1; padding: 12px; border: 1px solid #ddd; border-radius: 8px;"
-            >
+        <div style="margin-bottom: 1rem;">
+            <div class="db-select__trigger" style="width: 100%; display: flex; align-items: center;">
+                <!-- Search Icon -->
+                <svg class="db-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input 
+                    type="text" 
+                    x-model="search" 
+                    placeholder="검색 (제목, 내용, 태그)..." 
+                    style="border: none; outline: none; width: 100%; background: transparent; font-size: 0.875rem;"
+                >
+            </div>
         </div>
         
         <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
-            <button class="db-btn--toggle" @click="toggleAll()">All</button>
-            <button class="db-btn--toggle" @click="showPart = !showPart" :class="{ 'is-active': showPart }">그룹</button>
-            <button class="db-btn--toggle" @click="showSummary = !showSummary" :class="{ 'is-active': showSummary }">내용</button>
-            <button class="db-btn--toggle" @click="showTags = !showTags" :class="{ 'is-active': showTags }">태그</button>
-            <button class="db-btn--toggle" @click="showKeywords = !showKeywords" :class="{ 'is-active': showKeywords }">키워드</button>
+            <button class="db-btn db-btn--toggle" @click="toggleAll()">All</button>
+            <button class="db-btn db-btn--toggle" @click="showPart = !showPart" :class="{ 'is-active': showPart }">그룹</button>
+            <button class="db-btn db-btn--toggle" @click="showSummary = !showSummary" :class="{ 'is-active': showSummary }">내용</button>
+            <button class="db-btn db-btn--toggle" @click="showTags = !showTags" :class="{ 'is-active': showTags }">태그</button>
+            <button class="db-btn db-btn--toggle" @click="showKeywords = !showKeywords" :class="{ 'is-active': showKeywords }">키워드</button>
             
             <div style="width: 1px; height: 20px; background: #ddd; margin: 0 8px;"></div>
             
@@ -55,30 +61,30 @@ hide:
 
                 <div class="db-stack">
                     <template x-for="item in group.items" :key="item.id">
-                        <a :href="'..' + item.id" class="db-card">
+                        <a :href="'..' + item.id" class="db-kanban-card">
                             
-                            <div x-show="showPart || showStatus" style="display: flex; justify-content: space-between;">
-                                <span class="db-badge--part" 
+                            <div x-show="showPart || showStatus" style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <span class="db-badge db-badge--secondary" 
                                       x-show="showPart && item.metadata.part" 
                                       x-text="item.metadata.part"></span>
                                 
-                                <span class="db-badge--tag" 
+                                <span class="db-badge db-badge--status" 
                                       x-show="showStatus"
                                       x-text="item.metadata.learning_status"
                                       :style="item.metadata.learning_status === '완료' ? 'color: green; border-color: green;' : ''">
                                 </span>
                             </div>
 
-                            <h3 class="db-card__title" x-text="item.title"></h3>
+                            <h3 class="db-kanban-card__title" x-text="item.title"></h3>
 
-                            <p x-show="showSummary" class="db-card__meta" x-text="item.metadata.summary"></p>
+                            <p x-show="showSummary" class="db-kanban-card__meta" x-text="item.metadata.summary"></p>
 
-                            <div class="db-card__badges">
+                            <div class="db-kanban-card__badges">
                                 <template x-for="tag in item.metadata.tags">
-                                    <span class="db-badge--tag" x-show="showTags" x-text="tag"></span>
+                                    <span class="db-badge db-badge--outline" x-show="showTags" x-text="tag"></span>
                                 </template>
                                 <template x-for="kw in item.metadata.keywords">
-                                    <span class="db-badge--tag" x-show="showKeywords" style="border-radius: 12px;" x-text="kw"></span>
+                                    <span class="db-badge db-badge--outline" x-show="showKeywords" style="border-radius: 12px;" x-text="kw"></span>
                                 </template>
                             </div>
 
@@ -86,7 +92,7 @@ hide:
                     </template>
                 </div>
 
-                <button class="db-btn--add">
+                <button class="db-btn db-btn--dashed db-btn--full" style="margin-top: 12px;">
                     + 카드 추가
                 </button>
 

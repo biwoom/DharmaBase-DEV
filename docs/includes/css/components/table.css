@@ -1,0 +1,67 @@
+.db-table-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.db-table-scroll {
+    overflow-x: auto;
+    display: inline-block;
+    min-width: 100%;
+    border-radius: var(--db-radius-lg);
+    border: 1px solid var(--db-border);
+}
+
+.db-table {
+    min-width: 100%;
+    border-collapse: collapse;
+    background-color: var(--db-bg);
+}
+
+.db-table th {
+    padding: 0.75rem 1.25rem;
+    text-align: left;
+    font-size: 0.75rem;
+    /* text-xs */
+    font-weight: 500;
+    text-transform: uppercase;
+    color: var(--db-fg);
+    /* neutral-800 */
+    border-bottom: 1px solid var(--db-border);
+    background-color: var(--db-bg);
+}
+
+.db-table td {
+    padding: 1rem 1.25rem;
+    font-size: 0.875rem;
+    /* text-sm */
+    white-space: nowrap;
+    color: var(--db-muted-fg);
+    /* neutral-600 */
+    border-bottom: 1px solid var(--db-border);
+}
+
+.db-table__row--stripe {
+    background-color: var(--db-muted);
+    /* neutral-50 */
+}
+
+.db-table td.font-medium {
+    font-weight: 500;
+    color: var(--db-fg);
+}
+
+.db-table .text-right {
+    text-align: right;
+}
+
+.db-link {
+    color: #2563eb;
+    /* blue-600 */
+    text-decoration: none;
+}
+
+.db-link:hover {
+    color: #1d4ed8;
+    /* blue-700 */
+}

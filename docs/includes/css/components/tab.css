@@ -1,0 +1,97 @@
+.db-tab-container {
+    position: relative;
+    width: 100%;
+    max-width: 24rem;
+}
+
+.db-tab-header {
+    position: relative;
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 0.25rem;
+    width: 100%;
+    height: auto;
+    min-height: 2.5rem;
+    padding: 0.25rem;
+    background-color: #0000000d !important;
+    border: 1px solid var(--db-muted);
+    /* gray-100 */
+    border-radius: var(--db-radius-lg);
+    user-select: none;
+    align-items: center;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE/Edge */
+}
+
+.db-tab-header::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari */
+}
+
+.db-tab-btn {
+    position: relative;
+    /* z-index: 20; */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    /* Prevent shrinking */
+    width: auto;
+    height: 2rem;
+    padding: 0 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--db-muted-fg);
+    /* gray-500 */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: var(--db-radius-md);
+}
+
+.db-tab-btn--active {
+    color: var(--db-fg);
+    /* gray-700 */
+    background-color: #ffffff;
+    box-shadow: var(--db-shadow-sm);
+}
+
+.db-tab-marker {
+    position: absolute;
+    left: 0;
+    z-index: 10;
+    height: 100%;
+    transition: all 0.3s ease-out;
+}
+
+.db-tab-marker__inner {
+    width: 100%;
+    height: 100%;
+    background-color: var(--db-muted);
+    /* gray-100 */
+    border-radius: var(--db-radius-md);
+    box-shadow: var(--db-shadow-sm);
+}
+
+.db-tab-content-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 1.25rem;
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--db-muted-fg);
+    /* gray-400 */
+    border: 1px solid var(--db-border);
+    border-radius: var(--db-radius-md);
+}
+
+.db-tab-content {
+    position: relative;
+}

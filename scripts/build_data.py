@@ -13,21 +13,36 @@ def extract_chapter_info(file_path, root_dir):
     """
     파일 경로에서 상위 폴더를 추적하여 정렬 정보를 추출
     Target Pattern: "01_birth", "02_renunciation" ...
-    Returns: {'order': int, 'folder_name': str}
+    
+    [수정 사항] 
+    중첩된 폴더 구조일 경우, 가장 상위(Root에 가까운) 폴더의 정보를 우선합니다.
+    예: /05_turning/12_dependent/1.md -> Returns 05_turning info
     """
     current_path = file_path.parent
+    
+    # 기본값 설정
+    final_info = {'order': 999, 'folder_name': 'Uncategorized'}
+    found_match = False
     
     while current_path != root_dir:
         # 패턴 매칭: 숫자_영문 (예: 01_birth)
         match = re.match(r"^(\d+)_(.+)$", current_path.name)
+        
         if match:
-            return {
+            # 매칭되면 정보를 저장하되, 리턴하지 않고 계속 상위로 올라갑니다.
+            # 상위 폴더에서 또 매칭되면 그것이 덮어씁니다. (Bottom-up 탐색이므로 상위가 나중에 덮어씀)
+            # -> 수정: Bottom-up 탐색이므로 '가장 먼저 찾은 것(하위)'을 저장하고, 
+            # -> '가장 나중에 찾은 것(상위)'으로 계속 업데이트 해야 합니다.
+            
+            final_info = {
                 'order': int(match.group(1)),
-                'folder_name': match.group(2) # Fallback용 영문 이름
+                'folder_name': match.group(2)
             }
+            found_match = True
+            
         current_path = current_path.parent
         
-    return {'order': 999, 'folder_name': 'Uncategorized'}
+    return final_info
 
 def build_index():
     data = []
@@ -50,11 +65,9 @@ def build_index():
             
         # 2. Chapter 주입 (Frontmatter 필수, 없으면 폴더의 영문명 사용)
         if 'chapter' not in meta:
-            # 시스템 파일 및 index.md는 경고 제외
-            is_system_file = md_file.name in ['card.md', 'list.md', 'user.md', 'index.md']
-            
-            if not is_system_file:
-                print(f"⚠️ Warning: 'chapter' metadata missing in {md_file}. Using folder name.")
+            # [Update] 시스템 파일 및 Index 파일 경고 제외
+            if md_file.name not in ['card_view.md', 'list_view.md', 'index.md', 'user.md'] and not md_file.name.endswith('index.md'):
+                print(f"Warning: 'chapter' metadata missing in {md_file}. Using folder name.")
             
             meta['chapter'] = folder_info['folder_name']
         

@@ -1,0 +1,72 @@
+.db-dropdown {
+    position: relative;
+    display: inline-block;
+    font-family: var(--db-font-sans);
+}
+
+.db-dropdown__trigger {
+    /* 기존 버튼 스타일과 유사하게 설정 */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--db-fg);
+    background-color: var(--db-bg);
+    border: 1px solid var(--db-border);
+    border-radius: var(--db-radius-md);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.db-dropdown__trigger:hover {
+    background-color: var(--db-muted);
+}
+
+.db-dropdown__menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 50;
+    min-width: 12rem;
+    margin-top: 0.5rem;
+    padding: 0.25rem;
+    background-color: var(--db-bg);
+    border: 1px solid var(--db-border);
+    border-radius: var(--db-radius-md);
+    box-shadow: var(--db-shadow-md);
+    color: var(--db-fg);
+}
+
+.db-dropdown__item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0.375rem 0.5rem;
+    font-size: 0.875rem;
+    color: inherit;
+    text-decoration: none;
+    border-radius: var(--db-radius-sm);
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.db-dropdown__item:hover {
+    background-color: var(--db-accent);
+}
+
+/* Animation Utils */
+.db-transition-enter {
+    transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+}
+
+.db-transition-enter-start {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+}
+
+.db-transition-enter-end {
+    opacity: 1;
+    transform: translateY(0);
+}
