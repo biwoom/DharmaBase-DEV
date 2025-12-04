@@ -1,0 +1,301 @@
+[
+  {
+    "id": "/card/",
+    "title": "Card View",
+    "metadata": {
+      "title": "Card View",
+      "doc_type": "system",
+      "hide": [
+        "navigation",
+        "toc"
+      ],
+      "chapter_order": 999,
+      "chapter": "Uncategorized"
+    }
+  },
+  {
+    "id": "/list/",
+    "title": "List View",
+    "metadata": {
+      "title": "List View",
+      "doc_type": "system",
+      "hide": [
+        "navigation",
+        "toc"
+      ],
+      "chapter_order": 999,
+      "chapter": "Uncategorized"
+    }
+  },
+  {
+    "id": "/",
+    "title": "DharmaBase",
+    "metadata": {
+      "title": "DharmaBase",
+      "doc_type": "system",
+      "hide": [
+        "navigation",
+        "toc"
+      ],
+      "icon": "lucide/rocket",
+      "chapter_order": 999,
+      "chapter": "Uncategorized"
+    }
+  },
+  {
+    "id": "/user/",
+    "title": "User Dashboard",
+    "metadata": {
+      "title": "User Dashboard",
+      "doc_type": "system",
+      "hide": [
+        "navigation",
+        "toc"
+      ],
+      "chapter_order": 999,
+      "chapter": "Uncategorized"
+    }
+  },
+  {
+    "id": "/sutras/",
+    "title": "Sutras",
+    "metadata": {
+      "title": "Sutras",
+      "doc_type": "system",
+      "hide": null,
+      "chapter_order": 999,
+      "chapter": "Uncategorized"
+    }
+  },
+  {
+    "id": "/sutras/04_enlightenment/article4-2/",
+    "title": "새벽 별을 보며",
+    "metadata": {
+      "title": "새벽 별을 보며",
+      "chapter": "성도",
+      "part": "보리수",
+      "order": 2,
+      "division": "4품",
+      "volume": "4권",
+      "tags": [
+        "깨달음",
+        "붓다"
+      ],
+      "keywords": [
+        "샛별",
+        "연기법"
+      ],
+      "summary": "새벽 별을 보며 마침내 무상정등각을 이루다.",
+      "learning_status": "완료",
+      "chapter_order": 4
+    }
+  },
+  {
+    "id": "/sutras/04_enlightenment/article4-1/",
+    "title": "마왕의 유혹",
+    "metadata": {
+      "title": "마왕의 유혹",
+      "chapter": "성도",
+      "part": "보리수",
+      "order": 1,
+      "division": "4품",
+      "volume": "4권",
+      "tags": [
+        "항마",
+        "지혜"
+      ],
+      "keywords": [
+        "마왕",
+        "파순"
+      ],
+      "summary": "깨달음을 방해하는 마왕의 온갖 유혹을 물리치다.",
+      "learning_status": "완료",
+      "chapter_order": 4
+    }
+  },
+  {
+    "id": "/sutras/01_birth/article1-1/",
+    "title": "부처님의 탄생게",
+    "metadata": {
+      "title": "부처님의 탄생게",
+      "chapter": "탄생",
+      "part": "룸비니",
+      "order": 1,
+      "division": "1품",
+      "volume": "1권",
+      "tags": [
+        "자비",
+        "보살",
+        "서원"
+      ],
+      "keywords": [
+        "룸비니",
+        "마야부인"
+      ],
+      "summary": "룸비니 동산에서 부처님이 탄생하시며 외친 사자후.",
+      "learning_status": "학습대기",
+      "chapter_order": 1
+    }
+  },
+  {
+    "id": "/sutras/01_birth/article1-2/",
+    "title": "아홉 마리 용의 관욕",
+    "metadata": {
+      "title": "아홉 마리 용의 관욕",
+      "chapter": "탄생",
+      "part": "룸비니",
+      "order": 2,
+      "division": "1품",
+      "volume": "1권",
+      "tags": [
+        "청정",
+        "축복"
+      ],
+      "keywords": [
+        "구룡",
+        "관욕"
+      ],
+      "summary": "탄생 직후 아홉 마리 용이 아기 부처님을 씻겨주다.",
+      "learning_status": "학습중",
+      "chapter_order": 1
+    }
+  },
+  {
+    "id": "/sutras/02_renunciation/article2-2/",
+    "title": "북문에서 수행자를 보다",
+    "metadata": {
+      "title": "북문에서 수행자를 보다",
+      "chapter": "출가",
+      "part": "사문유관",
+      "order": 2,
+      "division": "2품",
+      "volume": "2권",
+      "tags": [
+        "희망",
+        "해탈"
+      ],
+      "keywords": [
+        "북문",
+        "사문"
+      ],
+      "summary": "수행자의 평온한 모습에서 삶의 길을 찾다.",
+      "learning_status": "학습대기",
+      "chapter_order": 2
+    }
+  },
+  {
+    "id": "/sutras/02_renunciation/article2-1/",
+    "title": "동문에서 늙음을 보다",
+    "metadata": {
+      "title": "동문에서 늙음을 보다",
+      "chapter": "출가",
+      "part": "사문유관",
+      "order": 1,
+      "division": "2품",
+      "volume": "2권",
+      "tags": [
+        "무상",
+        "고뇌"
+      ],
+      "keywords": [
+        "동문",
+        "노인"
+      ],
+      "summary": "화려한 궁궐 밖에서 늙음의 고통을 처음 목격하다.",
+      "learning_status": "완료",
+      "chapter_order": 2
+    }
+  },
+  {
+    "id": "/sutras/05_turning_wheel/article5-2/",
+    "title": "야사의 귀의",
+    "metadata": {
+      "title": "야사의 귀의",
+      "chapter": "전법",
+      "part": "녹야원",
+      "order": 2,
+      "division": "5품",
+      "volume": "5권",
+      "tags": [
+        "귀의",
+        "승가"
+      ],
+      "keywords": [
+        "야사",
+        "재가자"
+      ],
+      "summary": "모든 속박에서 벗어나는 길을 가르쳐 제자로 받아들이다.",
+      "learning_status": "학습대기",
+      "chapter_order": 5
+    }
+  },
+  {
+    "id": "/sutras/05_turning_wheel/article5-1/",
+    "title": "초전법륜",
+    "metadata": {
+      "title": "초전법륜",
+      "chapter": "전법",
+      "part": "녹야원",
+      "order": 1,
+      "division": "5품",
+      "volume": "5권",
+      "tags": [
+        "사성제",
+        "팔정도"
+      ],
+      "keywords": [
+        "녹야원",
+        "오비구"
+      ],
+      "summary": "옛 도반들에게 처음으로 진리의 수레바퀴를 굴리다.",
+      "learning_status": "학습중",
+      "chapter_order": 5
+    }
+  },
+  {
+    "id": "/sutras/03_asceticism/article3-2/",
+    "title": "수자타의 유미죽",
+    "metadata": {
+      "title": "수자타의 유미죽",
+      "chapter": "수행",
+      "part": "고행림",
+      "order": 2,
+      "division": "3품",
+      "volume": "3권",
+      "tags": [
+        "중도",
+        "공양"
+      ],
+      "keywords": [
+        "수자타",
+        "유미죽"
+      ],
+      "summary": "극단을 버리고 유미죽을 공양 받아 기력을 회복하다.",
+      "learning_status": "학습대기",
+      "chapter_order": 3
+    }
+  },
+  {
+    "id": "/sutras/03_asceticism/article3-1/",
+    "title": "6년의 고행",
+    "metadata": {
+      "title": "6년의 고행",
+      "chapter": "수행",
+      "part": "고행림",
+      "order": 1,
+      "division": "3품",
+      "volume": "3권",
+      "tags": [
+        "인내",
+        "정진"
+      ],
+      "keywords": [
+        "설산",
+        "고행"
+      ],
+      "summary": "깨달음을 얻기 위해 극한의 고행을 감내하다.",
+      "learning_status": "학습중",
+      "chapter_order": 3
+    }
+  }
+]
