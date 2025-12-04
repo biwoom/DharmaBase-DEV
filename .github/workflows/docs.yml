@@ -1,13 +1,17 @@
 name: Documentation
+
 on:
   push:
     branches:
-      - master
       - main
+      - master
+
+# 권한 설정 (GitHub Pages 배포를 위해 필수)
 permissions:
   contents: read
   pages: write
   id-token: write
+
 jobs:
   deploy:
     environment:
@@ -15,14 +19,37 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/configure-pages@v5
-      - uses: actions/checkout@v5
-      - uses: actions/setup-python@v5
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
           python-version: 3.x
-      - run: pip install zensical
-      - run: zensical build --clean
-      - uses: actions/upload-pages-artifact@v4
+
+      # [Step 1] 의존성 설치 (requirements.txt 기반)
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      # [Step 2] 데이터 파이프라인 실행 (JSON 생성)
+      - name: Build Data Index
+        run: |
+          python scripts/build_data.py
+
+      # [Step 3] 정적 사이트 빌드
+      - name: Build Zensical Site
+        run: |
+          zensical build --clean
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
           path: site
-      - uses: actions/deploy-pages@v4
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
