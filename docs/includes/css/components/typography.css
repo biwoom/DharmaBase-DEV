@@ -1,0 +1,204 @@
+/* Typography for Reader Content (.db-prose) */
+
+.db-prose {
+    color: var(--db-fg);
+    line-height: 1.75;
+    font-size: 1rem;
+    max-width: 100%;
+    /* Full width within the panel */
+}
+
+.db-prose h1,
+.db-prose h2,
+.db-prose h3,
+.db-prose h4 {
+    color: var(--db-fg);
+    font-weight: 600;
+    margin-top: 0.5em;
+    margin-bottom: 0.7em;
+    line-height: 1.3;
+}
+
+.db-prose h1 {
+    font-size: 1.8em;
+}
+
+.db-prose h2 {
+    font-size: 1.6em;
+    margin-top: 0.5em;
+    margin-bottom: 0.7em;
+}
+
+.db-prose h3 {
+    font-size: 1.3em;
+}
+
+.db-prose h4 {
+    font-size: 1.2em;
+}
+
+.db-prose p {
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+}
+
+.db-prose a {
+    color: var(--db-accent);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.db-prose a:hover {
+    text-decoration: underline;
+}
+
+.db-prose ul,
+.db-prose ol {
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+    padding-left: 1.625em;
+}
+
+.db-prose li {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.db-prose blockquote {
+    font-style: italic;
+    color: var(--db-muted-fg);
+    border-left: 4px solid var(--db-border);
+    padding-left: 1em;
+    margin-top: 1.6em;
+    margin-bottom: 1.6em;
+}
+
+.db-prose code {
+    color: var(--db-fg);
+    background-color: var(--db-muted);
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-size: 0.875em;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.db-prose pre {
+    background-color: #1e293b;
+    /* Dark slate for code blocks */
+    color: #e2e8f0;
+    padding: 1em;
+    border-radius: var(--db-radius-md);
+    overflow-x: auto;
+    margin-top: 1.7em;
+    margin-bottom: 1.7em;
+}
+
+.db-prose pre code {
+    background-color: transparent;
+    padding: 0;
+    color: inherit;
+    font-size: 0.875em;
+}
+
+.db-prose img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--db-radius-md);
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.db-prose hr {
+    border: 0;
+    border-top: 1px solid var(--db-border);
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+
+/* Admonitions (Zensical/Material style support) */
+.db-prose .admonition {
+    margin: 1.5625em 0;
+    padding: 0 1.2rem;
+    border-left: 0.4rem solid var(--db-accent);
+    background-color: var(--db-muted);
+    border-radius: 0.2rem;
+    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.05);
+}
+
+.db-prose .admonition-title {
+    font-weight: bold;
+    margin: 0 -1.2rem;
+    padding: 0.8rem 1.2rem 0.8rem 4rem;
+    /* Icon space */
+    background-color: rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+/* Zensical Navigation (Breadcrumbs) Fix */
+.db-prose .md-path {
+    margin: 0 0 0;
+    font-size: 0.7rem;
+    color: var(--db-muted-fg);
+    padding: 0px;
+}
+
+.db-prose .md-path__list {
+    display: flex !important;
+    /* Force horizontal layout */
+    flex-direction: row !important;
+    flex-wrap: nowrap;
+    /* Prevent wrapping */
+    overflow-x: auto;
+    /* Enable horizontal scroll */
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    gap: 0.5rem;
+    /* Add gap instead of separator */
+
+    /* Hide scrollbar for cleaner look */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.db-prose .md-path__list::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Opera */
+}
+
+.db-prose .md-path__item {
+    display: inline-flex !important;
+    align-items: center;
+    margin: 0;
+    gap: 1em;
+    margin-left: 1px !important;
+}
+
+/* Removed separator as requested */
+.db-prose .md-path__item:not(:last-child)::after {
+    content: none;
+}
+
+.db-prose .md-path__link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.db-prose .md-path__link:hover {
+    color: #2563eb !important;
+    /* Blue-600 for visibility */
+    text-decoration: underline;
+}
+
+.db-prose .md-ellipsis {
+    display: inline-block;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: bottom;
+}

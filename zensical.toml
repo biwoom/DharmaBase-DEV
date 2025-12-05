@@ -50,7 +50,7 @@ nav = [
   { "홈" = "index.md" },
   { "Card View" = "card_view.md" },
   { "List View" = "list_view.md" },
-  { "User" = "user.md" },
+  { "User View" = "user.md" },
     { "Sutras" = [
         { "개요" = "sutras/index.md" },
         { "1장: 탄생" = ["sutras/01_birth/article1-1.md", "sutras/01_birth/article1-2.md"] },
@@ -94,8 +94,13 @@ extra_css = [
     "includes/css/components/slideover.css",
     "includes/css/components/select.css",
     "includes/css/components/context-menu.css",
+    "includes/css/components/typography.css",
+    "includes/css/card.css",
+    "includes/css/list.css",
     "includes/css/card_view.css",
-    "includes/css/list_view.css"
+    "includes/css/list_view.css",
+    "includes/css/personalization.css",
+    "includes/css/dashboard.css" # Phase 7
 ]
 
 # With the `extra_javascript` option you can add your own JavaScript to your
@@ -105,8 +110,12 @@ extra_css = [
 #
 # Read more: https://zensical.org/docs/customization/#additional-javascript
 extra_javascript = [
+    "https://cdn.jsdelivr.net/npm/apexcharts",
     "includes/card.js",
     "includes/list.js",
+    "includes/reader.js",
+    "includes/personalization.js",
+    "includes/dashboard.js",
     "https://unpkg.com/alpinejs@3.13.3/dist/cdn.min.js"
 ]
 
@@ -132,7 +141,7 @@ extra_javascript = [
 # Read more:
 # - https://zensical.org/docs/customization/#extending-the-theme
 #
-#custom_dir = "overrides"
+custom_dir = "overrides"
 
 # With the "favicon" option you can set your own image to use as the icon
 # browsers will use in the browser title bar or tab bar. The path provided

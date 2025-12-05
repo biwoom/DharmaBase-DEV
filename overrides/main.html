@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+{{ super() }}
+
+<!-- Bookmark Button Injection Container -->
+<!-- This will be moved to the header via personalization.js -->
+<div id="db-bookmark-container" style="display: none;">
+    <button id="db-bookmark-btn" class="md-header__button md-icon" aria-label="Bookmark this page">
+        <!-- Lucide Bookmark Icon (Inline SVG) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z" />
+        </svg>
+    </button>
+</div>
+
+<!-- Floating Menu Component (Global Singleton) -->
+<div x-data="{
+    isOpen: false,
+    uuid: null,
+    top: 0,
+    left: 0,
+    memo: '',
+    mode: 'menu', // 'menu' or 'memo'
+
+    init() {
+        console.log('🌵 Alpine Floating Menu Initialized');
+
+        // Close on click outside
+        document.addEventListener('click', (e) => {
+            if (this.isOpen && !this.$el.contains(e.target) && !e.target.closest('.db-highlight')) {
+                this.isOpen = false;
+            }
+        });
+    },
+
+    handleOpen(e) {
+        console.log('🌵 Alpine received event:', e.detail);
+        this.uuid = e.detail.uuid;
+        this.memo = e.detail.memo || '';
+        this.top = e.detail.top;
+        this.left = e.detail.left;
+        this.mode = 'menu';
+        this.isOpen = true;
+    },
+
+    save() {
+        if (window.Personalization) {
+            window.Personalization.saveMemo(this.uuid, this.memo);
+            this.isOpen = false;
+        }
+    },
+
+    remove() {
+        if (window.Personalization) {
+            window.Personalization.removeAnnotation(this.uuid);
+            this.isOpen = false;
+        }
+    }
+}" @db-open-menu.window="handleOpen($event)" class="db-floating-menu" x-show="isOpen"
+    :class="{ 'db-floating-menu--mobile': window.innerWidth <= 768 }"
+    :style="window.innerWidth > 768 ? `top: ${top}px; left: ${left}px` : ''" style="display: none;" x-transition>
+
+    <!-- Mode: Menu -->
+    <div x-show="mode === 'menu'" class="db-menu-actions">
+        <button @click="mode = 'memo'" class="db-menu-btn" aria-label="Add Memo">
+            📝 메모
+        </button>
+        <button @click="remove()" class="db-menu-btn db-menu-btn--danger" aria-label="Delete Highlight">
+            🗑️ 삭제
+        </button>
+    </div>
+
+    <!-- Mode: Memo -->
+    <div x-show="mode === 'memo'" class="db-memo-editor">
+        <textarea x-model="memo" placeholder="메모를 입력하세요..." rows="3"></textarea>
+        <div class="db-memo-actions">
+            <button @click="mode = 'menu'" class="db-menu-btn">취소</button>
+            <button @click="save()" class="db-menu-btn db-menu-btn--primary">저장</button>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -5,7 +5,7 @@ hide:
 doc_type: system
 ---
 
-<div x-data="dharmaList" class="db-list-wrapper" style="width: 100%; max-width: 1200px; margin: 0 auto;">
+<div x-data="dharmaList" class="db-list-wrapper" style="width: 100%; max-width: auto; margin: 0 auto;">
 
   <!-- Search & Filter Area -->
   <div style="margin-bottom: 1.5rem;">
@@ -90,9 +90,9 @@ doc_type: system
                 <span 
                   class="db-badge db-badge--status" 
                   :class="{
-                    'db-badge--outline': doc.status === '학습대기',
-                    'db-badge--secondary': doc.status === '학습중',
-                    'db-badge--primary': doc.status === '학습완료'
+                    'db-badge--waiting': doc.status === '학습대기',
+                    'db-badge--progress': doc.status === '학습중',
+                    'db-badge--completed': doc.status === '학습완료'
                   }"
                   style="display: inline-flex; align-items: center; gap: 4px;"
                 >
@@ -119,4 +119,58 @@ doc_type: system
     <span x-text="' 문서: ' + visibleDocs.length"></span>
   </div>
 
+</div>
+
+<!-- Slide-Over Reader Component -->
+<div x-data="dharmaReader" 
+     @keydown.escape.window="close()"
+     class="db-reader-root">
+    
+    <!-- Backdrop -->
+    <div x-show="isOpen" 
+         @click="close()"
+         x-transition.opacity
+         class="db-slideover__backdrop"
+         style="display: none;"></div>
+
+    <!-- Panel -->
+    <div x-show="isOpen"
+         x-transition:enter="transition transform ease-out db-duration-2000"
+         x-transition:enter-start="translate-x-full"
+         x-transition:enter-end="translate-x-0"
+         x-transition:leave="transition transform ease-in duration-500"
+         x-transition:leave-start="translate-x-0"
+         x-transition:leave-end="translate-x-full"
+         class="db-slideover__panel"
+         :style="`--panel-width: ${width}px`"
+         style="display: none;">
+
+        <!-- Resizer -->
+        <div class="db-slideover__resizer" @mousedown="startResize"></div>
+
+        <!-- Content Container -->
+        <div class="db-slideover__content">
+            <!-- Header -->
+            <div class="db-slideover__header">
+                <h3 class="db-slideover__title" x-text="title"></h3>
+                <button @click="close()" class="db-slideover__close-btn" aria-label="Close">
+                    <svg class="db-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Body -->
+            <div class="db-slideover__body">
+                <!-- Loading State -->
+                <div x-show="isLoading" class="db-reader-loading">
+                    <div class="db-spinner"></div>
+                    <span>Loading...</span>
+                </div>
+
+                <!-- Content -->
+                <div x-show="!isLoading" class="db-prose" x-html="content"></div>
+            </div>
+        </div>
+    </div>
 </div>

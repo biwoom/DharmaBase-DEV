@@ -1,0 +1,303 @@
+/* Bookmark Button Styles */
+
+/* Target the breadcrumb container to enable flex layout */
+.md-path {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.db-bookmark-wrapper {
+    /* Flex positioning in .md-path */
+    margin-left: auto;
+    /* Push to the right */
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    /* Spacing from breadcrumbs */
+    margin-right: 1.5rem;
+}
+
+/* Fallback if injected into content (absolute) */
+.md-content__inner .db-bookmark-wrapper {
+    position: absolute;
+    top: 1rem;
+    right: 0;
+    z-index: 10;
+}
+
+/* Ensure content container is relative for absolute positioning fallback */
+.md-content__inner {
+    position: relative;
+}
+
+#db-bookmark-btn {
+    transition: color 0.2s ease, transform 0.1s ease;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    padding: 8px;
+    border-radius: 50%;
+}
+
+#db-bookmark-btn:hover {
+    background-color: var(--md-default-bg-color, rgba(0, 0, 0, 0.05));
+    color: var(--md-accent-fg-color, #526cfe);
+}
+
+#db-bookmark-btn:active {
+    transform: scale(0.9);
+}
+
+/* Active State (Bookmarked) */
+#db-bookmark-btn.db-bookmark-btn--active svg {
+    fill: currentColor;
+    /* Fill the icon */
+    color: var(--md-accent-fg-color, #526cfe);
+    /* Use accent color */
+}
+
+/* Animation for adding bookmark */
+@keyframes bookmark-pop {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Status Controls (Bottom of Content) */
+.db-status-controls {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    padding-bottom: .7rem;
+    border-top: 1px solid var(--md-default-fg-color--lightest);
+    display: flex;
+    justify-content: space-between;
+    /* Push groups apart */
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.db-status-group {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.db-stats-group {
+    display: flex;
+    gap: 0.5rem;
+    margin-left: auto;
+    /* Ensure right alignment if flex behavior varies */
+}
+
+.db-status-btn {
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--md-default-fg-color--lightest);
+    background: transparent;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-size: 0.75rem;
+    transition: all 0.2s ease;
+    color: var(--md-default-fg-color--light);
+}
+
+.db-status-btn:hover {
+    border-color: var(--md-default-fg-color);
+    color: var(--md-default-fg-color);
+}
+
+/* Active States */
+.db-status-btn.active {
+    font-weight: bold;
+    border-color: transparent;
+    color: white;
+}
+
+.db-status-btn[data-status="학습대기"].active {
+    background-color: #64748b;
+}
+
+.db-status-btn[data-status="학습중"].active {
+    background-color: #3b82f6;
+}
+
+.db-status-btn[data-status="학습완료"].active {
+    background-color: #10b981;
+}
+
+/* Stats Badges */
+.db-stat-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 0.8rem;
+    border-radius: 2rem;
+    /* Rounded button style */
+    background-color: var(--md-default-bg-color--lighter);
+    color: var(--md-default-fg-color);
+    font-size: 0.75rem;
+    font-weight: 500;
+    border: 1px solid var(--md-default-fg-color--lightest);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+
+/* Highlights */
+.db-highlight {
+    background-color: rgba(255, 255, 0, 0.3);
+    /* Light Yellow */
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+    transition: background-color 0.2s;
+}
+
+.db-highlight:hover {
+    background-color: rgba(255, 255, 0, 0.5);
+}
+
+/* Temp Highlight Button */
+.db-temp-highlight-btn {
+    position: absolute;
+    z-index: 1000;
+    background: var(--md-primary-fg-color);
+    /* Use theme primary color */
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border: none;
+    transform: translate(-50%, -100%);
+    /* Center above cursor */
+}
+
+
+/* Floating Menu */
+.db-floating-menu {
+    position: fixed;
+    z-index: 1000;
+    background: var(--md-default-bg-color);
+    border: 1px solid var(--md-default-fg-color--lightest);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    padding: 0.5rem;
+    min-width: 200px;
+    animation: fadeIn 0.2s ease-out;
+    transform: translateX(-50%);
+}
+
+.db-menu-close-btn {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--md-default-fg-color--light);
+    padding: 0 4px;
+    border-radius: 4px;
+}
+
+.db-menu-close-btn:hover {
+    background-color: var(--md-default-fg-color--lightest);
+    color: var(--md-default-fg-color);
+}
+
+/* Mobile Bottom Sheet */
+.db-floating-menu--mobile {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    transform: none;
+    border-radius: 12px 12px 0 0;
+    border-bottom: none;
+    padding: 16px;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Menu Actions */
+.db-menu-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.db-menu-btn {
+    background: none;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--md-default-fg-color);
+    transition: background 0.2s;
+}
+
+.db-menu-btn:hover {
+    background: var(--md-default-bg-color--lighter);
+}
+
+.db-menu-btn--danger {
+    color: #ef4444;
+}
+
+.db-menu-btn--primary {
+    background: var(--md-primary-fg-color);
+    color: white;
+}
+
+.db-menu-btn--primary:hover {
+    background: var(--md-primary-fg-color--light);
+}
+
+/* Memo Editor */
+.db-memo-editor {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.db-memo-editor textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: 4px;
+    font-family: inherit;
+    resize: vertical;
+    background: var(--md-default-bg-color);
+    color: var(--md-default-fg-color);
+}
+
+.db-memo-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+/* Memo Indicator */
+.db-has-memo {
+    border-bottom: 2px dotted #ef4444;
+    /* Red dotted underline */
+}

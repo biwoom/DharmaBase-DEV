@@ -29,14 +29,13 @@
   },
   {
     "id": "/user/",
-    "title": "User Dashboard",
+    "title": "user",
     "metadata": {
-      "title": "User Dashboard",
-      "doc_type": "system",
       "hide": [
         "navigation",
         "toc"
       ],
+      "doc_type": "system",
       "chapter_order": 999,
       "chapter": "Uncategorized"
     }

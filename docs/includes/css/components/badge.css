@@ -32,6 +32,26 @@
 .db-badge--status {
     padding: 1px 6px;
     border-radius: 4px;
-    background-color: var(--db-muted);
-    color: var(--db-fg);
+    background-color: transparent;
+    /* Changed from var(--db-muted) to transparent */
+    border: 1px solid transparent;
+    /* Ensure border exists for coloring */
+}
+
+.db-badge--waiting {
+    color: #64748b !important;
+    border-color: #64748b;
+    background-color: transparent !important;
+}
+
+.db-badge--progress {
+    color: #3b82f6 !important;
+    border-color: #3b82f6;
+    background-color: transparent !important;
+}
+
+.db-badge--completed {
+    color: #10b981 !important;
+    border-color: #10b981;
+    background-color: transparent !important;
 }

@@ -1,4 +1,4 @@
-document.addEventListener('alpine:init', () => {
+const initDharmaList = () => {
     Alpine.data('dharmaList', () => ({
         // --- State ---
         allDocs: [],         // 전체 문서 데이터 (Raw Data)
@@ -17,23 +17,39 @@ document.addEventListener('alpine:init', () => {
 
                 const rawData = await response.json();
 
+                // Load User Data
+                let userData = {};
+                try {
+                    const stored = localStorage.getItem('db_user_data_v1');
+                    if (stored) userData = JSON.parse(stored);
+                } catch (e) {
+                    console.error("Failed to load user data", e);
+                }
+                const learningStatus = userData.learning_status || {};
+
                 // Data Flattening & Filtering
                 // 1. 시스템 파일 제외
                 // 2. 메타데이터 평탄화 (metadata.* -> doc.*)
+                // 3. [New] Merge User Status
                 this.allDocs = rawData
                     .filter(item => item.metadata.doc_type !== 'system')
-                    .map(item => ({
-                        url: item.id,
-                        title: item.title,
-                        chapter: item.metadata.chapter || 'Uncategorized',
-                        chapter_order: item.metadata.chapter_order || 999,
-                        status: item.metadata.learning_status || '학습대기',
-                        tags: item.metadata.tags || [],
-                        keywords: item.metadata.keywords || [],
-                        summary: item.metadata.summary || '',
-                        part: item.metadata.part || '',
-                        // 필요한 경우 추가 필드 매핑
-                    }));
+                    .map(item => {
+                        // Determine Status
+                        const userStatus = learningStatus[item.id] || '학습대기';
+
+                        return {
+                            url: item.id,
+                            title: item.title,
+                            chapter: item.metadata.chapter || 'Uncategorized',
+                            chapter_order: item.metadata.chapter_order || 999,
+                            status: userStatus, // Use merged status
+                            tags: item.metadata.tags || [],
+                            keywords: item.metadata.keywords || [],
+                            summary: item.metadata.summary || '',
+                            part: item.metadata.part || '',
+                            // 필요한 경우 추가 필드 매핑
+                        };
+                    });
 
                 // 챕터 추출 및 정렬 (유니크한 값, Uncategorized 제외)
                 const uniqueChapters = Array.from(new Set(this.allDocs.map(doc => doc.chapter)))
@@ -74,10 +90,30 @@ document.addEventListener('alpine:init', () => {
         },
 
         openReader(doc) {
-            // Slide-Over 호출을 위한 커스텀 이벤트 발생
-            // slideover.js가 이 이벤트를 리스닝하고 있어야 함 (추후 구현 필요 시)
-            // 현재는 단순 링크 이동으로 처리하거나, 추후 slideover 연동
-            window.location.href = '..' + doc.url;
+            // Dispatch event for slide-over reader
+            // Note: doc.url is relative (e.g., /sutras/...), we might need to adjust based on base path
+            // Assuming doc.url comes from dharma_index.json which has site-relative paths
+
+            // Construct full relative path from current page location if needed, 
+            // but fetch() works well with root-relative paths if served correctly.
+            // Let's try passing the doc.url directly first.
+
+            // We need to handle the case where we are in /list_view/ (if it's a folder) or root.
+            // doc.url usually starts with /
+
+            // Dispatch event
+            window.dispatchEvent(new CustomEvent('open-slideover', {
+                detail: {
+                    url: '..' + doc.url, // Adjusting path relative to list_view.md location? 
+                    // list_view.md is in root docs/, so '..' might go up to parent of site?
+                    // list_view.md is rendered at /list_view/ usually?
+                    // If list_view.md is at root, doc.url (e.g. /sutras/...) should be fine as '.' + doc.url?
+                    // Let's check how zensical serves. 
+                    // Zensical serves /list_view/ usually.
+                    // So '..' takes us to root, then + doc.url works.
+                    title: doc.title
+                }
+            }));
         },
 
         // --- Computed Logic ---
@@ -124,4 +160,10 @@ document.addEventListener('alpine:init', () => {
             });
         }
     }));
-});
+};
+
+if (window.Alpine) {
+    initDharmaList();
+} else {
+    document.addEventListener('alpine:init', initDharmaList);
+}

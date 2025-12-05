@@ -40,7 +40,7 @@ hide:
                 <option value="all">모든 상태</option>
                 <option value="학습대기">학습대기</option>
                 <option value="학습중">학습중</option>
-                <option value="완료">학습완료</option>
+                <option value="학습완료">학습완료</option>
             </select>
         </div>
     </div>
@@ -59,9 +59,9 @@ hide:
                     <span style="font-size: 12px; opacity: 0.6;" x-text="group.items.length"></span>
                 </div>
 
-                <div class="db-stack">
-                    <template x-for="item in group.items" :key="item.id">
-                        <a :href="'..' + item.id" class="db-kanban-card">
+                    <div class="db-stack">
+                        <template x-for="item in group.items" :key="item.id">
+                            <div @click="openReader(item)" class="db-kanban-card" style="cursor: pointer;">
                             
                             <div x-show="showPart || showStatus" style="display: flex; justify-content: space-between; margin-bottom: 8px;">
                                 <span class="db-badge db-badge--secondary" 
@@ -71,7 +71,11 @@ hide:
                                 <span class="db-badge db-badge--status" 
                                       x-show="showStatus"
                                       x-text="item.metadata.learning_status"
-                                      :style="item.metadata.learning_status === '완료' ? 'color: green; border-color: green;' : ''">
+                                      :class="{
+                                          'db-badge--waiting': item.metadata.learning_status === '학습대기',
+                                          'db-badge--progress': item.metadata.learning_status === '학습중',
+                                          'db-badge--completed': item.metadata.learning_status === '학습완료'
+                                      }">
                                 </span>
                             </div>
 
@@ -86,15 +90,12 @@ hide:
                                 <template x-for="kw in item.metadata.keywords">
                                     <span class="db-badge db-badge--outline" x-show="showKeywords" style="border-radius: 12px;" x-text="kw"></span>
                                 </template>
-                            </div>
-
-                        </a>
-                    </template>
+                        </template>
                 </div>
 
-                <button class="db-btn db-btn--dashed db-btn--full" style="margin-top: 12px;">
+                <!-- <button class="db-btn db-btn--dashed db-btn--full" style="margin-top: 12px;">
                     + 카드 추가
-                </button>
+                </button> -->
 
             </div>
         </template>
@@ -104,5 +105,58 @@ hide:
     <div x-show="!isLoading && groupedItems.length === 0" style="text-align: center; color: gray; margin-top: 2rem;">
         <p>검색 결과가 없습니다.</p>
     </div>
+</div>
 
+<!-- Slide-Over Reader Component -->
+<div x-data="dharmaReader" 
+     @keydown.escape.window="close()"
+     class="db-reader-root">
+    
+    <!-- Backdrop -->
+    <div x-show="isOpen" 
+         @click="close()"
+         x-transition.opacity
+         class="db-slideover__backdrop"
+         style="display: none;"></div>
+
+    <!-- Panel -->
+    <div x-show="isOpen"
+         x-transition:enter="transition transform ease-out db-duration-2000"
+         x-transition:enter-start="translate-x-full"
+         x-transition:enter-end="translate-x-0"
+         x-transition:leave="transition transform ease-in duration-500"
+         x-transition:leave-start="translate-x-0"
+         x-transition:leave-end="translate-x-full"
+         class="db-slideover__panel"
+         :style="`--panel-width: ${width}px`"
+         style="display: none;">
+
+        <!-- Resizer -->
+        <div class="db-slideover__resizer" @mousedown="startResize"></div>
+
+        <!-- Content Container -->
+        <div class="db-slideover__content">
+            <!-- Header -->
+            <div class="db-slideover__header">
+                <h3 class="db-slideover__title" x-text="title"></h3>
+                <button @click="close()" class="db-slideover__close-btn" aria-label="Close">
+                    <svg class="db-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Body -->
+            <div class="db-slideover__body">
+                <!-- Loading State -->
+                <div x-show="isLoading" class="db-reader-loading">
+                    <div class="db-spinner"></div>
+                    <span>Loading...</span>
+                </div>
+
+                <!-- Content -->
+                <div x-show="!isLoading" class="db-prose" x-html="content"></div>
+            </div>
+        </div>
+    </div>
 </div>

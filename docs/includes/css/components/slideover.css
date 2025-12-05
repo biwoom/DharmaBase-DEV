@@ -1,3 +1,5 @@
+/* Slide-Over Component (Resizable) */
+
 .db-slideover-trigger-wrapper {
     position: relative;
     z-index: 50;
@@ -12,144 +14,132 @@
 .db-slideover__backdrop {
     position: fixed;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Darker backdrop for better focus */
+    backdrop-filter: blur(2px);
+    z-index: 100;
 }
 
-/* Transitions: Fade */
-.db-fade-enter {
-    transition: opacity 0.6s ease;
-}
-
-.db-fade-enter-start {
-    opacity: 0;
-}
-
-.db-fade-enter-end {
-    opacity: 1;
-}
-
-.db-fade-leave {
-    transition: opacity 0.6s ease;
-}
-
-.db-fade-leave-start {
-    opacity: 1;
-}
-
-.db-fade-leave-end {
-    opacity: 0;
-}
-
-.db-slideover__container {
-    position: fixed;
-    inset: 0;
-    overflow: hidden;
-}
-
-.db-slideover__viewport {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-}
-
-.db-slideover__align {
-    position: fixed;
-    inset-y: 0;
-    right: 0;
-    display: flex;
-    max-width: 100%;
-    padding-top: 2.75rem;
-    /* pt-11 for demo adjustment */
-    padding-left: 2.5rem;
-    /* pl-10 */
-}
-
-/* Panel */
+/* Panel Container */
 .db-slideover__panel {
-    width: 100vw;
-    max-width: 28rem;
-    /* max-w-md */
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--db-bg);
+    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
+    /* Deep shadow */
+    z-index: 101;
+    display: flex;
+    flex-direction: row;
+    /* Horizontal layout for Resizer + Content */
+
+    /* Resizable Logic */
+    width: var(--panel-width, 50vw);
+    min-width: 320px;
+    max-width: 90vw;
 }
 
-/* Transitions: Slide */
-.db-slide-enter {
-    transition: transform 0.5s ease-in-out;
+/* Resizer Handle */
+.db-slideover__resizer {
+    width: 25px;
+    height: 100%;
+    cursor: ew-resize;
+    background-color: #f2f2f2;
+    transition: background-color 0.2s;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 102;
 }
 
-.db-slide-enter-start {
-    transform: translateX(100%);
+.db-slideover__resizer:hover,
+.db-slideover__resizer:active {
+    background-color: var(--db-accent);
+    /* Visual feedback */
 }
 
-.db-slide-enter-end {
-    transform: translateX(0);
+/* Custom Duration for slow animation */
+.db-duration-2000 {
+    transition-duration: 2000ms !important;
 }
 
-.db-slide-leave {
-    transition: transform 0.5s ease-in-out;
-}
-
-.db-slide-leave-start {
-    transform: translateX(0);
-}
-
-.db-slide-leave-end {
-    transform: translateX(100%);
-}
-
+/* Content Area */
 .db-slideover__content {
+    flex: 1;
     display: flex;
     flex-direction: column;
     height: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
     background-color: var(--db-bg);
-    border-left: 1px solid var(--db-border);
-    box-shadow: var(--db-shadow-md);
-    padding-top: 1.25rem;
-    padding-bottom: 1.25rem;
+    position: relative;
 }
 
+/* Header */
 .db-slideover__header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    padding: 0 1rem;
-    margin-bottom: 1.25rem;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--db-border);
+    background-color: var(--db-bg);
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 .db-slideover__title {
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.125rem !important;
+    font-weight: 600 !important;
     color: var(--db-fg);
+    margin: 0px 0px !important;
 }
 
 .db-slideover__close-btn {
     display: flex;
     align-items: center;
-    padding: 0.5rem 0.75rem;
-    font-size: 0.75rem;
-    font-weight: 500;
-    text-transform: uppercase;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: var(--db-radius-md);
     color: var(--db-muted-fg);
     background: transparent;
-    border: 1px solid var(--db-border);
-    border-radius: var(--db-radius-md);
+    border: none;
     cursor: pointer;
+    transition: all 0.2s;
 }
 
 .db-slideover__close-btn:hover {
     background-color: var(--db-muted);
+    color: var(--db-fg);
 }
 
-
-
+/* Body */
 .db-slideover__body {
-    position: relative;
     flex: 1;
-    padding: 0 1rem;
+    padding: 1.5rem;
 }
 
-.db-slideover__placeholder {
+/* Loading State */
+.db-reader-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 100%;
-    border: 1px dashed var(--db-border);
-    border-radius: var(--db-radius-md);
+    color: var(--db-muted-fg);
+    gap: 0.5rem;
+}
+
+.db-spinner {
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 2px solid var(--db-muted);
+    border-top-color: var(--db-accent);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
 }

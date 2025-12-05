@@ -17,6 +17,7 @@
     border-radius: var(--db-radius-lg);
     border: 1px solid var(--db-border);
     padding: 12px;
+    padding-bottom: 35px;
 }
 
 .db-column__header {
