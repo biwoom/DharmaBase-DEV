@@ -107,7 +107,7 @@ doc_type: system
                             <th style="min-width: 80px; width: 100px;">챕터</th>
                             <th style="min-width: 100px; width: 250px;">문서 제목</th>
                             <th style="min-width: 300px;">하이라이트 / 메모</th>
-                            <th style="min-width: 80px; width: 80px;">관리</th>
+                            <th style="min-width: 100px; width: 80px;">관리</th>
                         </tr>
                     </thead>
                     <tbody>
