@@ -691,17 +691,21 @@ const Personalization = {
     getCanonicalId(url) {
         if (!this.indexData) return url;
 
-        // Try to find matching item in index
-        const match = this.indexData.find(item => {
+        // Find all potential matches
+        const matches = this.indexData.filter(item => {
             if (item.id === url) return true;
-            // Suffix match for site prefix handling
-            if (item.id === '/' || item.id === '/index.html') return false; // Skip root ambiguity for now
             if (url.endsWith(item.id)) return true;
             try { if (decodeURIComponent(url).endsWith(item.id)) return true; } catch (e) { }
             return false;
         });
 
-        return match ? match.id : url;
+        // Return the longest match (most specific)
+        if (matches.length > 0) {
+            matches.sort((a, b) => b.id.length - a.id.length);
+            return matches[0].id;
+        }
+
+        return url;
     },
 
     // Helper to get status

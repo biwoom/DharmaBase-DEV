@@ -18,7 +18,7 @@ doc_type: system
         type="text" 
         x-model="searchQuery" 
         placeholder="검색 (제목, 내용, 태그)..." 
-        style="border: none; outline: none; width: 100%; background: transparent; font-size: 0.875rem;"
+        style="border: none; outline: none; width: 100%; background: transparent; font-size: 0.7rem;"
       >
     </div>
   </div>

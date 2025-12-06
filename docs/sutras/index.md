@@ -1,6 +1,6 @@
 ---
 title: Sutras
-doc_type: system
+chapter: "개요"
 hide:
 #   - navigation
 #   - toc

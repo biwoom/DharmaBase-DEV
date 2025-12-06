@@ -1,4 +1,5 @@
 ---
+title: User Dashboard
 hide:
   - navigation
   - toc

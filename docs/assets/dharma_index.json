@@ -29,8 +29,9 @@
   },
   {
     "id": "/user/",
-    "title": "user",
+    "title": "User Dashboard",
     "metadata": {
+      "title": "User Dashboard",
       "hide": [
         "navigation",
         "toc"
@@ -59,10 +60,9 @@
     "title": "Sutras",
     "metadata": {
       "title": "Sutras",
-      "doc_type": "system",
+      "chapter": "개요",
       "hide": null,
-      "chapter_order": 999,
-      "chapter": "Uncategorized"
+      "chapter_order": 999
     }
   },
   {

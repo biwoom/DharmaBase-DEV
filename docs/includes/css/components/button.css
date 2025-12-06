@@ -36,7 +36,7 @@
     border: 1px solid var(--db-border);
     background: var(--db-muted);
     color: var(--db-fg);
-    font-size: 13px;
+    font-size: 17px;
 }
 
 .db-btn--toggle:hover {

@@ -19,7 +19,7 @@ hide:
                     type="text" 
                     x-model="search" 
                     placeholder="검색 (제목, 내용, 태그)..." 
-                    style="border: none; outline: none; width: 100%; background: transparent; font-size: 0.875rem;"
+                    style="border: none; outline: none; width: 100%; background: transparent; font-size: 0.7rem;"
                 >
             </div>
         </div>
@@ -35,7 +35,7 @@ hide:
             
             <select 
                 x-model="statusFilter" 
-                style="min-width: 120px; padding: 4px 12px; border: 1px solid #ddd; border-radius: 8px;"
+                style="font-size: 17px; min-width: 120px; padding: 4px 12px; border: 1px solid #ddd; border-radius: 8px;"
             >
                 <option value="all">모든 상태</option>
                 <option value="학습대기">학습대기</option>

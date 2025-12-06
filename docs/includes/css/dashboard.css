@@ -109,7 +109,7 @@
 }
 
 .db-list-title {
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     font-weight: 500;
     white-space: nowrap;
     overflow: hidden;
@@ -132,7 +132,7 @@
 .db-simple-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
 }
 
 .db-simple-table th {
@@ -253,7 +253,7 @@
 
 /* Section Headers */
 .db-section-header {
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: 700;
     margin-bottom: 1rem;
     display: flex;
@@ -310,7 +310,7 @@ padding-bottom: 0.5rem;
 .db-notebook-table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
 }
 
 .db-notebook-table th {

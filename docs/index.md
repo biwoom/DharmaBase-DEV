@@ -12,10 +12,10 @@ icon: lucide/rocket
 
 DharmaBase는 단순한 문서 뷰어가 아닙니다. 정적 웹사이트의 **안정성**과 최신 웹 앱의 **상호작용**을 결합한, 당신만의 지식 수행(Learning) 플랫폼입니다.
 
-[시작하기 : Get Started][get-started]{ .md-button .md-button--primary }
+[프로젝트 : GitHub][get-started]{ .md-button .md-button--primary }
 [기능 살펴보기 : Features][features]{ .md-button }
 
-  [get-started]: https://zensical.org/docs/
+  [get-started]: https://github.com/biwoom/DharmaBase-DEV
   [features]: #key-features
 
 ---

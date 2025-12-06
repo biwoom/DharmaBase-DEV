@@ -41,7 +41,7 @@
     /* Prevent shrinking */
     width: auto;
     height: 2rem;
-    padding: 0 0.75rem;
+    /* padding: 0 0.75rem; */
     font-size: 0.875rem;
     font-weight: 500;
     color: var(--db-muted-fg);
@@ -51,6 +51,7 @@
     cursor: pointer;
     transition: all 0.2s;
     border-radius: var(--db-radius-md);
+    margin: 5px 5px;
 }
 
 .db-tab-btn--active {

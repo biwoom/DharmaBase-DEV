@@ -33,7 +33,7 @@
 
 .db-table td {
     padding: 1rem 1.25rem;
-    font-size: 0.875rem;
+    font-size: 0.75rem !important;
     /* text-sm */
     white-space: nowrap;
     color: var(--db-muted-fg);
