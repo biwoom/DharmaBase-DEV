@@ -51,7 +51,6 @@ nav = [
   { "List View" = "list_view.md" },
   { "User View" = "user.md" },
     { "Sutras" = [
-        { "개요" = "sutras/index.md" },
         { "1장: 탄생" = ["sutras/01_birth/article1-1.md", "sutras/01_birth/article1-2.md"] },
         { "2장: 출가" = ["sutras/02_renunciation/article2-1.md", "sutras/02_renunciation/article2-2.md"] },
         { "3장: 수행" = ["sutras/03_asceticism/article3-1.md", "sutras/03_asceticism/article3-2.md"] },

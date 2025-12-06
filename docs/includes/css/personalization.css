@@ -99,6 +99,15 @@
     /* Ensure right alignment if flex behavior varies */
 }
 
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .db-stats-group {
+        display: flex;
+        gap: 0.5rem;
+        margin-left: inherit;
+    }
+}
+
 .db-status-btn {
     padding: 0.3rem 0.7rem;
     border: 1px solid var(--md-default-fg-color--lightest);
