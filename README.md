@@ -1,4 +1,4 @@
-# ![logo](images/logo.png) DharmaBase
+# DharmaBase
 **The Personal Knowledge Base & Interactive Web Book Engine**
 
 DharmaBase는 정적 웹사이트의 **안정성**과 최신 웹 앱의 **상호작용**을 결합한, 당신만의 지식 수행(Learning) 플랫폼입니다.
