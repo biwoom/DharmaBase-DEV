@@ -140,7 +140,8 @@ custom_fences = [
 ]
 
 [project.theme]
-
+logo = "images/logo.png"
+favicon = "images/favicon.png"
 # change this to "classic" to use the traditional Material for MkDocs look.
 #variant = "classic"
 

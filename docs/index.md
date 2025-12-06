@@ -7,7 +7,7 @@ hide:
 icon: lucide/rocket
 ---
 
-# DharmaBase
+# ![logo](images/logo.png){ width="35px" } DharmaBase
 **The Personal Knowledge Base & Interactive Web Book Engine**
 
 DharmaBase는 단순한 문서 뷰어가 아닙니다. 정적 웹사이트의 **안정성**과 최신 웹 앱의 **상호작용**을 결합한, 당신만의 지식 수행(Learning) 플랫폼입니다.
@@ -120,4 +120,4 @@ DharmaBase는 **데이터 전처리(Pipeline)**와 **자동 배포(CI/CD)**로 �
 
 -----
 
-*Powered by **Zensical** & **Alpine.js*** | *Designed for Deep Learning*
+Powered by **Zensical** & **Alpine.js** | Designed for Deep Learning
