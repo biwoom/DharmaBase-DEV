@@ -47,7 +47,7 @@ const initDharmaList = () => {
                             keywords: item.metadata.keywords || [],
                             summary: item.metadata.summary || '',
                             part: item.metadata.part || '',
-                            // 필요한 경우 추가 필드 매핑
+                            order: item.metadata.order || 999
                         };
                     });
 
@@ -147,16 +147,27 @@ const initDharmaList = () => {
                 if (valA === undefined) valA = '';
                 if (valB === undefined) valB = '';
 
-                if (typeof valA === 'number' && typeof valB === 'number') {
-                    return this.sortAsc ? valA - valB : valB - valA;
+                // Primary Sort
+                if (valA !== valB) {
+                    if (typeof valA === 'number' && typeof valB === 'number') {
+                        return this.sortAsc ? valA - valB : valB - valA;
+                    }
+                    valA = String(valA).toLowerCase();
+                    valB = String(valB).toLowerCase();
+                    if (valA < valB) return this.sortAsc ? -1 : 1;
+                    if (valA > valB) return this.sortAsc ? 1 : -1;
                 }
 
-                valA = String(valA).toLowerCase();
-                valB = String(valB).toLowerCase();
+                // Secondary Sort (Tie-breakers)
+                // Always Ascending for secondary sort
 
-                if (valA < valB) return this.sortAsc ? -1 : 1;
-                if (valA > valB) return this.sortAsc ? 1 : -1;
-                return 0;
+                // 1. Order
+                if (a.order !== b.order) {
+                    return a.order - b.order;
+                }
+
+                // 2. Title
+                return a.title.localeCompare(b.title);
             });
         }
     }));

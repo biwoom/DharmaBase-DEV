@@ -87,6 +87,15 @@ const initDharmaCard = () => {
             // Sorting Logic (chapter_order 기반)
             const groupArray = Object.keys(groups).map(key => {
                 const items = groups[key];
+
+                // [New] Sort items within the group
+                items.sort((a, b) => {
+                    const orderA = a.metadata.order ?? 999;
+                    const orderB = b.metadata.order ?? 999;
+                    if (orderA !== orderB) return orderA - orderB;
+                    return a.title.localeCompare(b.title);
+                });
+
                 // 그룹 내 아이템 중 가장 작은 chapter_order 값을 그룹의 순서로 채택
                 const minOrder = items.reduce((min, item) => {
                     const order = item.metadata.chapter_order;

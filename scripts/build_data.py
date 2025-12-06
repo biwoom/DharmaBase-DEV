@@ -48,7 +48,8 @@ def build_index():
     data = []
     
     # docs 폴더 내의 모든 md 파일 탐색
-    for md_file in DOCS_DIR.rglob('*.md'):
+    # docs 폴더 내의 모든 md 파일 탐색 (정렬하여 순서 보장)
+    for md_file in sorted(DOCS_DIR.rglob('*.md')):
         # 메타데이터 파일이나 assets 내의 md는 제외
         if 'includes' in str(md_file) or 'assets' in str(md_file):
             continue
