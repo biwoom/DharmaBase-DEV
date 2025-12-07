@@ -9,6 +9,105 @@ import re
 DOCS_DIR = Path('docs')
 OUTPUT_FILE = DOCS_DIR / 'assets' / 'dharma_index.json'
 
+def generate_sort_key(file_path, root_dir, folder_info, meta):
+    """
+    Generate a hierarchical sort key string.
+    Format: "{root_order:02d}-{sub_order:02d}-{file_order:03d}"
+    Example: 
+        - Root: 05_turning (5)
+        - Sub: 12_dependent (12)
+        - Files: order 1 
+        => "05-12-001"
+    """
+    try:
+        # Step 1: Root Chapter Order
+        root_order = folder_info['order']
+        
+        # Step 2: Sub-folder Order
+        # Find if there is any numbered folder between root chapter and file
+        sub_order = 0
+        current = file_path.parent
+        
+        # We need to find the specific subfolder relative to the root chapter folder
+        # Logic: iterate from file's parent up to root_dir
+        # But we need to be careful about which folder is "Root Chapter"
+        # root_dir is 'docs'. 
+        
+        # Let's use the parts relative to DOCS_DIR
+        relative_parts = file_path.relative_to(root_dir).parent.parts
+        
+        # relative_parts example: ('sutras', '05_turning', '12_dependent')
+        # We assume strict structure: category / chapter / sub-chapter
+        # But commonly we have: 05_turning / 12_dependent
+        
+        # Let's iterate parts and find the LAST numbered folder that is NOT the root chapter
+        # Actually, simpler logic:
+        # 1. We know 'root_order' comes from '05_turning'.
+        # 2. We want to find if there is a '12_dependent' AFTER '05_turning'.
+        
+        for part in relative_parts:
+            match = re.match(r"^(\d+)_(.+)$", part)
+            if match:
+                order = int(match.group(1))
+                # If this order is NOT the root_order (or if it is, but we want the *second* one?)
+                # Wait, root_order is the *first* match in top-down, or *last* match in bottom-up?
+                # extract_chapter_info was top-level priority (so first match in path).
+                
+                # Let's rely on strict parsing of the path components:
+                # We want the second numbered component if it exists.
+                
+                # Check if this part corresponds to the root chapter we identified
+                if order != root_order:
+                     # This might be a sub-chapter
+                     # We take the *last* seen sub-chapter order as the sub_order
+                     sub_order = order
+                
+                # What if root_order and sub_order are same? (Unlikely but possible)
+                # Better approach: Collect ALL numbered parts.
+                pass
+
+        # Robust Approach: Collect all defined orders in path
+        orders = []
+        for part in relative_parts:
+            match = re.match(r"^(\d+)_(.+)$", part)
+            if match:
+                orders.append(int(match.group(1)))
+        
+        # Assign Root and Sub based on collected orders
+        if not orders:
+            # No numbered folders
+            s_root = 99
+            s_sub = 0
+        elif len(orders) == 1:
+            # Only Root
+            s_root = orders[0]
+            s_sub = 0
+        else:
+            # Root and Sub(s). We take the first as Root, and the *last* as Sub (deepest)
+            s_root = orders[0]
+            s_sub = orders[-1]
+            
+        # Refine Root Order validation
+        # extract_chapter_info logic: "Top-Level Priority" means it takes the first match?
+        # Let's look at extract_chapter_info again.
+        # It walks UP from file.parent to root.
+        # It overwrites info. So the *last* overwrite (highest folder) wins?
+        # No! `while current_path != root_dir`. It starts at file.parent.
+        # It matches. Then moves to parent. Matches again.
+        # The *last* set survives. The last set is the *highest* folder (closest to root).
+        # So YES, extract_chapter_info returns the ROOT chapter info. Correct.
+        
+        # So s_root should be orders[0] (closest to root).
+        
+        # Step 3: File Order
+        file_order = meta.get('order', 999)
+        
+        return f"{s_root:02d}-{s_sub:02d}-{file_order:03d}"
+        
+    except Exception as e:
+        print(f"Sort Key Error {file_path}: {e}")
+        return "99-00-999"
+
 def extract_chapter_info(file_path, root_dir):
     """
     파일 경로에서 상위 폴더를 추적하여 정렬 정보를 추출
@@ -72,6 +171,9 @@ def build_index():
             
             meta['chapter'] = folder_info['folder_name']
         
+        # [New] Generate Hierarchical Sort Key
+        sort_key = generate_sort_key(md_file, DOCS_DIR, folder_info, meta)
+        
         # URL ID 생성 (예: docs/sutras/chap1.md -> /sutras/chap1/)
         try:
             relative_path = md_file.relative_to(DOCS_DIR)
@@ -82,6 +184,7 @@ def build_index():
             entry = {
                 "id": url_id,
                 "title": meta.get('title', md_file.stem),
+                "sort_key": sort_key, # [New] Injected Key
                 "metadata": meta,
                 # "content": post.content[:200] # 필요시 주석 해제
             }

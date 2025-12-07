@@ -90,9 +90,11 @@ const initDharmaCard = () => {
 
                 // [New] Sort items within the group
                 items.sort((a, b) => {
-                    const orderA = a.metadata.order ?? 999;
-                    const orderB = b.metadata.order ?? 999;
-                    if (orderA !== orderB) return orderA - orderB;
+                    const keyA = a.sort_key || '99-00-999';
+                    const keyB = b.sort_key || '99-00-999';
+                    if (keyA !== keyB) {
+                        return keyA < keyB ? -1 : 1;
+                    }
                     return a.title.localeCompare(b.title);
                 });
 

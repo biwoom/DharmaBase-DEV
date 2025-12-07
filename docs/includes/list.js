@@ -47,7 +47,8 @@ const initDharmaList = () => {
                             keywords: item.metadata.keywords || [],
                             summary: item.metadata.summary || '',
                             part: item.metadata.part || '',
-                            order: item.metadata.order || 999
+                            order: item.metadata.order || 999,
+                            sort_key: item.sort_key || '99-00-999' // [New]
                         };
                     });
 
@@ -158,16 +159,15 @@ const initDharmaList = () => {
                     if (valA > valB) return this.sortAsc ? 1 : -1;
                 }
 
-                // Secondary Sort (Tie-breakers)
-                // Always Ascending for secondary sort
-
-                // 1. Order
-                if (a.order !== b.order) {
-                    return a.order - b.order;
+                // If primary sort keys are equal (rare for unique sort_key, but possible for other cols)
+                // Use sort_key as ultimate tie-breaker
+                if (this.sortKey !== 'sort_key') {
+                    if (a.sort_key < b.sort_key) return -1;
+                    if (a.sort_key > b.sort_key) return 1;
+                    return 0;
                 }
 
-                // 2. Title
-                return a.title.localeCompare(b.title);
+                return 0;
             });
         }
     }));

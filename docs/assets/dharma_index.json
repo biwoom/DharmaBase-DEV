@@ -2,6 +2,7 @@
   {
     "id": "/card_view/",
     "title": "Card View",
+    "sort_key": "99-00-999",
     "metadata": {
       "title": "Card View",
       "doc_type": "system",
@@ -16,6 +17,7 @@
   {
     "id": "/",
     "title": "DharmaBase",
+    "sort_key": "99-00-999",
     "metadata": {
       "title": "DharmaBase",
       "doc_type": "system",
@@ -31,6 +33,7 @@
   {
     "id": "/list_view/",
     "title": "list_view",
+    "sort_key": "99-00-999",
     "metadata": {
       "hide": [
         "navigation",
@@ -44,6 +47,7 @@
   {
     "id": "/sutras/01_birth/article1-1/",
     "title": "부처님의 탄생게",
+    "sort_key": "01-00-001",
     "metadata": {
       "title": "부처님의 탄생게",
       "chapter": "탄생",
@@ -68,6 +72,7 @@
   {
     "id": "/sutras/01_birth/article1-2/",
     "title": "아홉 마리 용의 관욕",
+    "sort_key": "01-00-002",
     "metadata": {
       "title": "아홉 마리 용의 관욕",
       "chapter": "탄생",
@@ -91,6 +96,7 @@
   {
     "id": "/sutras/02_renunciation/article2-1/",
     "title": "동문에서 늙음을 보다",
+    "sort_key": "02-00-001",
     "metadata": {
       "title": "동문에서 늙음을 보다",
       "chapter": "출가",
@@ -114,6 +120,7 @@
   {
     "id": "/sutras/02_renunciation/article2-2/",
     "title": "북문에서 수행자를 보다",
+    "sort_key": "02-00-002",
     "metadata": {
       "title": "북문에서 수행자를 보다",
       "chapter": "출가",
@@ -137,6 +144,7 @@
   {
     "id": "/sutras/03_asceticism/article3-1/",
     "title": "6년의 고행",
+    "sort_key": "03-00-001",
     "metadata": {
       "title": "6년의 고행",
       "chapter": "수행",
@@ -160,6 +168,7 @@
   {
     "id": "/sutras/03_asceticism/article3-2/",
     "title": "수자타의 유미죽",
+    "sort_key": "03-00-002",
     "metadata": {
       "title": "수자타의 유미죽",
       "chapter": "수행",
@@ -183,6 +192,7 @@
   {
     "id": "/sutras/04_enlightenment/article4-1/",
     "title": "마왕의 유혹",
+    "sort_key": "04-00-001",
     "metadata": {
       "title": "마왕의 유혹",
       "chapter": "성도",
@@ -206,6 +216,7 @@
   {
     "id": "/sutras/04_enlightenment/article4-2/",
     "title": "새벽 별을 보며",
+    "sort_key": "04-00-002",
     "metadata": {
       "title": "새벽 별을 보며",
       "chapter": "성도",
@@ -229,6 +240,7 @@
   {
     "id": "/sutras/05_turning_wheel/12_dependent_origination/article5-3/",
     "title": "12연기",
+    "sort_key": "05-12-001",
     "metadata": {
       "title": "12연기",
       "chapter": "전법",
@@ -244,7 +256,7 @@
         "녹야원",
         "오비구"
       ],
-      "summary": "이것이 있으므로 저것이 있다",
+      "summary": "이것이 있으므로 저것이 있다. 룸비니",
       "learning_status": "학습중",
       "chapter_order": 5
     }
@@ -252,6 +264,7 @@
   {
     "id": "/sutras/05_turning_wheel/article5-1/",
     "title": "초전법륜",
+    "sort_key": "05-00-001",
     "metadata": {
       "title": "초전법륜",
       "chapter": "전법",
@@ -275,6 +288,7 @@
   {
     "id": "/sutras/05_turning_wheel/article5-2/",
     "title": "야사의 귀의",
+    "sort_key": "05-00-002",
     "metadata": {
       "title": "야사의 귀의",
       "chapter": "전법",
@@ -298,6 +312,7 @@
   {
     "id": "/user/",
     "title": "User Dashboard",
+    "sort_key": "99-00-999",
     "metadata": {
       "title": "User Dashboard",
       "hide": [
